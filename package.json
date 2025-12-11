@@ -14,12 +14,15 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "pdfmake": "^0.2.20",
     "vue": "^3.5.25",
     "vue-router": "^4.6.3"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.3",
     "@types/node": "^24.10.1",
+    "@types/pdfmake": "^0.2.12",
     "@vitejs/plugin-vue": "^6.0.2",
     "@vue/tsconfig": "^0.8.1",
     "npm-run-all2": "^8.0.4",
