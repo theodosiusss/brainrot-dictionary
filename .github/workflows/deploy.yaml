@@ -17,7 +17,7 @@ jobs:
           node-version: 22
 
       - run: npm ci
-      - run: npm run build
+      - run: npm run build-only
 
       - name: SSH Agent
         uses: webfactory/ssh-agent@v0.9.0
