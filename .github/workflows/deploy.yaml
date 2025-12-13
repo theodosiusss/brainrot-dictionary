@@ -28,7 +28,22 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-      
+
+      - name: Test connection and verify path
+        run: |
+          echo "Testing SSH connection as user..."
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "whoami && pwd"
+
+          echo "Checking if path exists..."
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "ls -la ${{ secrets.SSH_PATH }} 2>/dev/null || echo 'Path does not exist'"
+
+          echo "Checking parent directory..."
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "ls -la $(dirname '${{ secrets.SSH_PATH }}')"
+
+          echo "Testing write permissions..."
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "touch '${{ secrets.SSH_PATH }}/test.txt' 2>&1 || echo 'Cannot write'"
+          
+
       - name: Deploy via rsync
         run: |
           rsync -avz --delete \
