@@ -26,6 +26,7 @@ onMounted(async () => {
   const res = await fetch("/brainrot.json");
   brainrot.value = await res.json();
   filteredBrainrot.value = brainrot.value.terms;
+  sortFilteredBrainrot();
 });
 
 const goToDetail = (term: Term) => {
@@ -100,15 +101,31 @@ function sendEmail() {
       });
 }
 
+function sortFilteredBrainrot() {
+  if (!filteredBrainrot.value) return;
+
+  filteredBrainrot.value.sort((a, b) => {
+    if (a.year !== b.year) {
+      return b.year - a.year;
+    }
+    if (a.isIn !== b.isIn) {
+      return Number(b.isIn) - Number(a.isIn);
+    }
+    return a.term.localeCompare(b.term, "de", { sensitivity: "base" });
+  });
+}
+
+
 watch(searchInput, (value) => {
   filteredBrainrot.value = brainrot.value.terms?.filter(s => s.term.toLowerCase().includes(value.toLowerCase()) || s.description.toLowerCase().includes(value.toLowerCase()) || s.year.toString().includes(value.toLowerCase()));
+  sortFilteredBrainrot();
 })
 
+const pdfIsStyled = ref(false);
 
 function downloadPdf() {
-  if(filteredBrainrot.value && filteredBrainrot.value?.length > 0) {
-    console.log(filteredBrainrot.value);
-    printPdf(filteredBrainrot.value)
+  if (filteredBrainrot.value && filteredBrainrot.value?.length > 0) {
+    printPdf(filteredBrainrot.value, pdfIsStyled.value)
   }
 }
 
@@ -122,14 +139,27 @@ function downloadPdf() {
       <img src="/marx.png" class="marx-spinner" alt="karl marx"/>
     </h1>
 
-    <!-- OPEN MODAL BUTTON -->
-    <button class="goofy-btn" @click="modalOpen = true">
-      Wort vorschlagen
-    </button>
-<!--PDF Herunterladen-->
-    <button class="goofy-btn" @click="downloadPdf">
-      Pdf herunterladen
-    </button>
+    <!-- BUTTONS GROUP -->
+    <div class="buttons-group">
+      <button class="goofy-btn" @click="modalOpen = true">
+        Wort vorschlagen
+      </button>
+      <div>
+        <button class="goofy-btn" @click="downloadPdf">
+          Pdf herunterladen
+        </button>
+        <div class="tooltip-container">
+          <input
+              type="checkbox"
+              id="styledPdf"
+              v-model="pdfIsStyled"
+              class="styled-checkbox"
+          >
+          <span class="tooltip-text">Mit Styling?</span>
+        </div>
+
+      </div>
+    </div>
 
     <!-- Search Field -->
     <div>
@@ -255,6 +285,16 @@ function downloadPdf() {
   filter: drop-shadow(0 0 10px red);
 }
 
+/* --- BUTTONS GROUP --- */
+.buttons-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+}
+
 /* --- GOOFY BUTTON --- */
 .goofy-btn {
   background: #ff0000;
@@ -313,6 +353,12 @@ function downloadPdf() {
   margin-bottom: 15px;
   font-size: 1.8rem;
 }
+
+.goofy-btn.small {
+  padding: clamp(6px, 1.5vw, 8px) clamp(12px, 3vw, 15px);
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}
+
 
 label {
   color: #ffaaaa;
@@ -432,6 +478,58 @@ label {
   font-size: 1.2rem;
   animation: wiggle 0.3s ease-in-out;
   box-shadow: 0 0 10px #ff3333;
+}
+
+/* --- TOOLTIP CHECKBOX --- */
+.tooltip-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  background-color: #ff0000;
+  color: white;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid black;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) skew(-3deg);
+  white-space: nowrap;
+  transition: opacity 0.3s, visibility 0.3s;
+  font-family: "Impact", sans-serif;
+  font-size: 1rem;
+  box-shadow: 3px 3px 0 black;
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ff0000 transparent transparent transparent;
+}
+
+/* Custom checkbox styling */
+.styled-checkbox {
+  cursor: pointer;
+
 }
 
 
