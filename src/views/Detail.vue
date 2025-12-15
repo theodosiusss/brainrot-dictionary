@@ -14,6 +14,7 @@ onMounted(async () => {
   const res = await fetch("/brainrot.json");
   const data = await res.json();
   term.value = data.terms?.find((t: Term) => t.term === props.term);
+  console.log(term.value);
 });
 
 // random position helper - UPDATED for better mobile

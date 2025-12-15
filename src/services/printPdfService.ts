@@ -10,7 +10,7 @@ export function printPdf(terms: Term[], isStyled: boolean) {
     if (isStyled) {
 
         const formattedTerms = terms.map(term => {
-            if (term.term && term.description && term.year && term.isIn)
+            if (term.term && term.description && term.year)
                 return {
                     unbreakable: true,
                     margin: [0, 10, 0, 10],   // etwas mehr Raum zwischen den Boxen
@@ -158,7 +158,7 @@ export function printPdf(terms: Term[], isStyled: boolean) {
         };
     } else {
         const formattedTerms = terms.map(term => {
-            if (term.term && term.description && term.year && term.isIn)
+            if (term.term && term.description && term.year)
                 return {
                     unbreakable: true,
                     stack: [

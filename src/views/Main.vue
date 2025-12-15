@@ -105,13 +105,13 @@ function sortFilteredBrainrot() {
   if (!filteredBrainrot.value) return;
 
   filteredBrainrot.value.sort((a, b) => {
-    if (a.year !== b.year) {
-      return b.year - a.year;
-    }
     if (a.isIn !== b.isIn) {
       return Number(b.isIn) - Number(a.isIn);
     }
-    return a.term.localeCompare(b.term, "de", { sensitivity: "base" });
+    if (a.year !== b.year) {
+      return b.year - a.year;
+    }
+    return a.term.localeCompare(b.term, "de", {sensitivity: "base"});
   });
 }
 

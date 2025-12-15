@@ -4,7 +4,7 @@
       "term": "67",
       "description": "67 ist lustig weil es heißt eigentlich nix, kommt von Basketball Edits eigentlich",
       "year": "2025",
-      "isIn": "true",
+      "isIn": true,
       "links": [
         "https://www.tiktok.com/@dasding/video/7563698618016845078",
         "https://www.tiktok.com/@iyaadarshaq.rblx/video/7571787008964709633",
@@ -22,7 +22,7 @@
       "term": "skibidi",
       "description": "Kommt von so nem bulgarischen song der schon ur lang auf TikTok verwendet wurde, dann hat jemand eine Toilette mit Kopf das Singen lassen, also Skibidi Toilet. Seitdem kann man skibidi eigentlich vor alles setzen, hat nicht wirklich eine Bedeutung",
       "year": "2023",
-      "isIn": "false",
+      "isIn": false,
       "links": [
         "https://www.youtube.com/watch?v=2y0wPirFlxw",
         "https://www.youtube.com/watch?v=HlwHdHjrkp8",
@@ -39,7 +39,7 @@
       "term": "rizz",
       "description": "Also basically die Fähigkeit andere Menschen zu klären, also so selbsbewusst leute anzusprechen und beeindrucken und so",
       "year": "2021",
-      "isIn": "true",
+      "isIn": true,
       "links": [
         "https://www.youtube.com/watch?v=2y0wPirFlxw",
         "https://www.youtube.com/watch?v=I7-i__Mls5E",
@@ -54,8 +54,8 @@
     {
       "term": "khaby lame mechanism",
       "description": "2021 hat ein Youtuber den move vom Tiktoker khaby lame als roboter nachgebaut, das wurde im Herbst 2025 wieder aufgenommen und mit lustigen witzen über den Khaby Lame Mechanism gepaart. Dort geht es oft darum als Seele in einer Maschine gefangen zu sein, vielleicht hat dieses Meme eine tiefere Bedeutung?",
-      "year": "2025",
-      "isIn": "true",
+      "year": 2025,
+      "isIn": true,
       "links": [
         "https://www.youtube.com/watch?v=2vExTdE6GqA",
         "https://www.youtube.com/watch?v=gpMOixfuNrE",
@@ -71,7 +71,7 @@
       "term": "tuff",
       "description": "etwas ist cool, nice, fresh, toll -  alles was irgendwie gut ist, tuff ist sehr positiv und lobt einfach dinge -> zb: ts (this shit) so tuff",
       "year": "2025",
-      "isIn": "true",
+      "isIn": true,
       "links": [
         "https://www.youtube.com/watch?v=2vExTdE6GqA",
         "https://www.youtube.com/watch?v=gpMOixfuNrE",
@@ -92,7 +92,7 @@
       "term": "lowkirkenuinely",
       "description": "lowkey + genuinely + charlie kirk = kann man wie so lowkey benutzen aber halt bisschen verstärkt",
       "year": "2025",
-      "isIn": "true",
+      "isIn": true,
       "links": [
         "https://www.tiktok.com/@etymologynerd/video/7582759928645864717?q=lowkirkenuenly&t=1765661664776",
         "https://www.urbandictionary.com/define.php?term=Lowkirkenuinely",
@@ -109,7 +109,7 @@
       "term": "gloving",
       "description": "ist so ne Kunstform wo man sich LEDs an die finger macht und dann lustige Sachen macht, ist eigentlich ur alt, wird aber jetzt auf tiktok verarscht",
       "year": "2025",
-      "isIn": "true",
+      "isIn": true,
       "links": [
         "https://www.tiktok.com/@h00pify/video/7582001299571346701",
         "https://www.tiktok.com/@infinite_puppet/video/7462085768702397738",
